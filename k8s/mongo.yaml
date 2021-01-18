@@ -28,6 +28,24 @@ spec:
               cpu: "500m"
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
-              value: asd
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-username                  
             - name: MONGO_INITDB_ROOT_PASSWORD
-              value: asd
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: mongo-root-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
