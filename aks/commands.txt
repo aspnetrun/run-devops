@@ -76,3 +76,24 @@ az acr repository show-tags --name swnzenacr --repository shoppingclient --outpu
 Result
 v1
 --
+Create AKS cluster with attaching ACR
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys --attach-acr swnzenacr
+
+--
+Install the Kubernetes CLI
+az aks install-cli
+--
+Connect to cluster using kubectl
+az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+
+To verify;
+kubectl get nodes
+kubectl get all
+--
+Check Kube Config
+
+kubectl config get-contexts
+kubectl config current-context
+kubectl config use-context gcpcluster-k8s-1
+	Switched to context "gcpcluster-k8s-1"
+
