@@ -1,0 +1,78 @@
+Start Docker Images
+run  = docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+stop = docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+--
+See images
+docker images
+
+See running containers
+docker ps
+--
+See application locally
+TEST
+http://localhost:8000/swagger/index.html
+http://localhost:8001/
+--
+Stop Running Containers
+stop = docker-compose -f docker-compose.yml -f docker-compose.override.yml down
+-- --
+Install the Azure CLI
+	https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
+	https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli
+--
+az version
+
+{
+  "azure-cli": "2.16.0",
+  "azure-cli-core": "2.16.0",
+  "azure-cli-telemetry": "1.0.6",
+  "extensions": {}
+}
+--
+az login
+--
+Create a resource group
+az group create --name myResourceGroup --location westeurope
+--
+Create an Azure Container Registry
+az acr create --resource-group myResourceGroup --name swnzenacr --sku Basic
+--
+Enable Admin Account for ACR Pull
+az acr update -n swnzenacr --admin-enabled true
+--
+Log in to the container registry
+az acr login --name swnzenacr
+Login Succeeded
+--
+Tag a container image
+
+get the login server address
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
+swnzenacr.azurecr.io
+--
+Tag your images
+
+docker tag shoppingapi:latest swnzenacr.azurecr.io/shoppingapi:v1
+docker tag shoppingclient:latest swnzenacr.azurecr.io/shoppingclient:v1
+
+Check
+docker images
+--
+Push images to registry
+
+docker push swnzenacr.azurecr.io/shoppingapi:v1
+docker push swnzenacr.azurecr.io/shoppingclient:v1
+--
+List images in registry
+az acr repository list --name swnzenacr --output table
+
+Result
+shoppingapi
+shoppingclient
+--
+See tags
+az acr repository show-tags --name swnzenacr --repository shoppingclient --output table
+
+Result
+v1
+--
