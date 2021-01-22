@@ -35,49 +35,49 @@ Create a resource group
 az group create --name myResourceGroup --location westeurope
 --
 Create an Azure Container Registry
-az acr create --resource-group myResourceGroup --name swnzenacr --sku Basic
+az acr create --resource-group myResourceGroup --name shoppingacr --sku Basic
 --
 Enable Admin Account for ACR Pull
-az acr update -n swnzenacr --admin-enabled true
+az acr update -n shoppingacr --admin-enabled true
 --
 Log in to the container registry
-az acr login --name swnzenacr
+az acr login --name shoppingacr
 Login Succeeded
 --
 Tag a container image
 
 get the login server address
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-swnzenacr.azurecr.io
+shoppingacr.azurecr.io
 --
 Tag your images
 
-docker tag shoppingapi:latest swnzenacr.azurecr.io/shoppingapi:v1
-docker tag shoppingclient:latest swnzenacr.azurecr.io/shoppingclient:v1
+docker tag shoppingapi:latest shoppingacr.azurecr.io/shoppingapi:v1
+docker tag shoppingclient:latest shoppingacr.azurecr.io/shoppingclient:v1
 
 Check
 docker images
 --
 Push images to registry
 
-docker push swnzenacr.azurecr.io/shoppingapi:v1
-docker push swnzenacr.azurecr.io/shoppingclient:v1
+docker push shoppingacr.azurecr.io/shoppingapi:v1
+docker push shoppingacr.azurecr.io/shoppingclient:v1
 --
 List images in registry
-az acr repository list --name swnzenacr --output table
+az acr repository list --name shoppingacr --output table
 
 Result
 shoppingapi
 shoppingclient
 --
 See tags
-az acr repository show-tags --name swnzenacr --repository shoppingclient --output table
+az acr repository show-tags --name shoppingacr --repository shoppingclient --output table
 
 Result
 v1
 --
 Create AKS cluster with attaching ACR
-az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys --attach-acr swnzenacr
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys --attach-acr shoppingacr
 
 --
 Install the Kubernetes CLI
