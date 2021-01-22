@@ -5,7 +5,7 @@ metadata:
   labels:
     app: shoppingclient
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: shoppingclient
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: shoppingclient
-          image: shoppingacr.azurecr.io/shoppingclient:v1
+          image: shoppingacr.azurecr.io/shoppingclient:v2
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80
@@ -31,10 +31,10 @@ spec:
           resources:
             requests:
               memory: "64Mi"
-              cpu: "250m"
+              cpu: "0.1"
             limits:
               memory: "128Mi"
-              cpu: "500m"
+              cpu: "0.3"
       imagePullSecrets:
         - name: acr-secret
 ---

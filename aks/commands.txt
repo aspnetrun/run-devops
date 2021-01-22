@@ -97,6 +97,10 @@ kubectl config current-context
 kubectl config use-context gcpcluster-k8s-1
 	Switched to context "gcpcluster-k8s-1"
 --
+Deploy microservices to AKS
+
+kubectl apply -f .\aks\
+--
 Clean All AKS and Azure Resources
 
 az group delete --name myResourceGroup --yes --no-wait
