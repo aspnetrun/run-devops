@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: shoppingapi 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shoppingapi
+  template:
+    metadata:
+      labels:
+        app: shoppingapi 
+    spec:
+      containers:
+        - name: shoppingapi 
+          image: shoppingacr.azurecr.io/shoppingapi
+          ports:
+          - containerPort: 80
