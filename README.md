@@ -5,3 +5,4 @@ Deploying .Net Microservices to Azure Kubernetes Services(AKS) and Automating wi
 
 [![Build Status](https://dev.azure.com/ezozkme/shopping/_apis/build/status/shoppingapi-pipeline?branchName=main)](https://dev.azure.com/ezozkme/shopping/_build/latest?definitionId=13&branchName=main)
 
+**Check Explanation of this Repository on Medium -> https://mehmetozkaya.medium.com/deploying-net-microservices-to-azure-kubernetes-services-aks-and-automating-with-azure-devops-c50bdd51b702**
