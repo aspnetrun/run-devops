@@ -5,7 +5,7 @@ Deploying .Net Microservices into Kubernetes, and moving deployments to the clou
 
 [![Build Status](https://dev.azure.com/ezozkme/shopping/_apis/build/status/shoppingapi-pipeline?branchName=main)](https://dev.azure.com/ezozkme/shopping/_build/latest?definitionId=13&branchName=main)
 
-UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/using-grpc-in-microservices-communication-with-net-5/?couponCode=148712949BFD61FA9D78
+**UDEMY COURSE WITH DISCOUNTED - Step by Step Development of this repository -> https://www.udemy.com/course/using-grpc-in-microservices-communication-with-net-5/?couponCode=148712949BFD61FA9D78**
 
 **Check Explanation of this Repository on Medium -> https://mehmetozkaya.medium.com/deploying-net-microservices-to-azure-kubernetes-services-aks-and-automating-with-azure-devops-c50bdd51b702**
 
@@ -34,7 +34,7 @@ Update microservices with zero-downtime deployments.
 ### Deploy to Azure Kubernetes Services (AKS) through CI/CD Azure Pipelines
 And the last step, we are focusing on automation deployments with creating CI/CD pipelines on Azure Devops tool. We will develop separate microservices deployment pipeline yamls with using Azure Pipelines.
 When we push code to Github, microservices pipeline triggers, build docker images and push the ACR, deploy to Azure Kubernetes services with zero-downtime deployments.
-Image for post
+
 ![cicd](https://user-images.githubusercontent.com/1147445/105671542-f37c3700-5ef3-11eb-9532-59a5855214d0.png)
 
 By the end of this articles, you’ll learn how to deploy your multi-container microservices applications with automating all deployment process seperately.
